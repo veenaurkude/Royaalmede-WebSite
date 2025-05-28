@@ -10,12 +10,36 @@ import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 
 const About = () => {
   const properties = [
-    "/img1.jpg",
-    "/img2.png",
-    "/img3.png",
-    "/img4.png",
-    "/img5.png",
-    "/img6.png",
+    {
+      src: "/img1.jpg",
+      title: "Royaalmede",
+      description: "Modern design in a prime residential location.",
+    },
+    {
+      src: "/img2.png",
+      title: "Royaalmede Premium",
+      description: "Commercial excellence in the city center.",
+    },
+    {
+      src: "/img3.png",
+      title: "Royaal Kings",
+      description: "Luxury villas surrounded by greenery.",
+    },
+    {
+      src: "/img4.png",
+      title: "Royaal Krishnum",
+      description: "Elegant high-rise living with modern amenities.",
+    },
+    {
+      src: "/img5.png",
+      title: "Rachana City",
+      description: "Sophisticated urban development project.",
+    },
+    {
+      src: "/img6.png",
+      title: "Royaalmede Plaza",
+      description: "Smart commercial space for modern enterprises.",
+    },
   ];
 
   return (
@@ -61,13 +85,10 @@ const About = () => {
           name="twitter:description"
           content="Explore Royaalmede’s real estate journey and leadership in premium residential and commercial development in Nagpur."
         />
-        <meta
-          name="twitter:image"
-          content="/home1.jpg"
-        />
+        <meta name="twitter:image" content="/home1.jpg" />
       </Head>
 
-      <div className="flex min-h-screen flex-col font-sans bg-white">
+      <main className="flex min-h-screen flex-col font-sans bg-white">
         {/* Header */}
         <Header />
 
@@ -158,13 +179,13 @@ const About = () => {
               <div className="relative w-72 h-72 rounded-xl overflow-hidden border-4 border-amber-500 shadow-lg">
                 <Image
                   src="/ankit.jpg"
-                  alt="Mr. Ankit Malviya"
+                  alt="Mr. Ankkit Malviyaa"
                   fill
                   className="object-cover"
                 />
               </div>
               <p className="mt-4 text-xl font-semibold text-center">
-                Mr. Ankit Malviya
+                Mr. Ankkit Malviyaa
               </p>
             </div>
           </section>
@@ -176,26 +197,26 @@ const About = () => {
                 Our Achievements
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {properties.map((src, index) => (
+                {properties.map((property, index) => (
                   <div
                     key={index}
                     className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 bg-white"
                   >
                     <div className="relative w-full h-80 rounded-xl overflow-hidden">
                       <Image
-                        src={src}
-                        alt={`Property ${index + 1}`}
+                        src={property.src}
+                        alt={property.title}
                         fill
                         className="w-full h-80 items-center justify-center bg-white"
-                        // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        // className="object-cover"
                       />
                     </div>
                     <div className="p-4">
                       <h3 className="text-lg font-semibold">
-                        Property #{index + 1}
+                        {property.title}
                       </h3>
                       <p className="text-sm text-gray-600">
-                        Modern design, prime location.
+                        {property.description}
                       </p>
                     </div>
                   </div>
@@ -210,7 +231,7 @@ const About = () => {
 
         {/* WhatsAppBtn */}
         <WhatsAppBtn />
-      </div>
+      </main>
     </>
   );
 };

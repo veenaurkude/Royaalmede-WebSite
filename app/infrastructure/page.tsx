@@ -24,7 +24,7 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 
-export default function InfrastructurePage() {
+const InfrastructurePage = () => {
   return (
     <>
       <Head>
@@ -94,7 +94,7 @@ export default function InfrastructurePage() {
             {/* Content */}
             <div className="relative z-10 text-center px-4 max-w-4xl">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-                Infrastructure Projects
+                RoyaalMede Infrastructure Projects
               </h1>
               <p className="text-lg sm:text-xl text-gray-200 mb-6">
                 Discover our premium residential and commercial properties
@@ -622,3 +622,5 @@ export default function InfrastructurePage() {
     </>
   );
 }
+
+export default InfrastructurePage;

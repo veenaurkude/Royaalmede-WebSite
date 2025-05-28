@@ -17,7 +17,7 @@ const Footer = () => {
               <div>
                 {/* <h3 className="text-xl text-amber-500 font-bold">Royaalmede</h3> */}
                 <img
-                  src="./logo.svg"
+                  src="./royaalmede_logo.png"
                   alt="Royaalmede Logo"
                   className="w-[200px]"
                 />
@@ -57,17 +57,17 @@ const Footer = () => {
                     href="/loans"
                     className="text-gray-900 hover:text-blue-900"
                   >
-                    Loan Solutions
+                    RoyaalMede Loan Solutions
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href="/infrastructure"
                     className="text-gray-900 hover:text-blue-900"
                   >
-                    Infrastructure
+                    RoyaalMede Infrastructure
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     href="/#testimonials"
@@ -82,6 +82,14 @@ const Footer = () => {
                     className="text-gray-900 hover:text-blue-900"
                   >
                     Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/career"
+                    className="text-gray-900 hover:text-blue-900"
+                  >
+                    Career
                   </Link>
                 </li>
               </ul>

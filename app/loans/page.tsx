@@ -1,4 +1,6 @@
 "use client";
+
+import { useState } from "react";
 import Head from "next/head";
 
 import {
@@ -22,8 +24,12 @@ import {
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
+import Modal from "@/components/Modal/Modal";
+import { Input } from "@/components/ui/input";
 
-export default function LoansPage() {
+const LoansPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -53,10 +59,7 @@ export default function LoansPage() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="/logo.svg" />
-        <meta
-          property="og:image"
-          content="/building.jpg"
-        />
+        <meta property="og:image" content="/building.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -68,10 +71,7 @@ export default function LoansPage() {
           name="twitter:description"
           content="Royaalmede offers business, personal, and home loans in Nagpur with fast approval and flexible repayment."
         />
-        <meta
-          name="twitter:image"
-          content="/img1.jpg"
-        />
+        <meta name="twitter:image" content="/img1.jpg" />
       </Head>
 
       <div className="flex min-h-screen flex-col font-sans">
@@ -91,7 +91,7 @@ export default function LoansPage() {
             {/* Content */}
             <div className="relative z-10 text-center px-4 max-w-4xl">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-                Loan Solutions
+                RoyaalMede Loan Solutions
               </h1>
               <p className="text-lg sm:text-xl text-gray-200 mb-6">
                 We offer a variety of loan options to meet your financial needs
@@ -101,18 +101,11 @@ export default function LoansPage() {
                 <Button
                   size="lg"
                   className="gap-1 bg-amber-500 hover:bg-amber-600"
+                  onClick={() => setIsModalOpen(true)}
                 >
-                  <Link href="https://wa.me/919028999253">Apply Now </Link>
-
-                  <ArrowRight className="h-4 w-4" />
+                  Apply Now
+                  <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
-                {/* <Button
-                size="lg"
-                variant="outline"
-                className="gap-1 border-white text-white hover:bg-white/10"
-              >
-                Calculate EMI
-              </Button> */}
               </div>
 
               {/* Back to Home */}
@@ -124,6 +117,42 @@ export default function LoansPage() {
                 Back to Home
               </Link>
             </div>
+
+            {/* Modal */}
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+              <h2 className="text-2xl font-bold mb-6 text-blue-900 text-center">
+                Loan Enquiry Form
+              </h2>
+              <form className="space-y-4 text-blue-900">
+                <Input type="text" placeholder="Name" required />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <Input type="tel" placeholder="Mobile No." required />
+                  <Input type="email" placeholder="Email-Id" required />
+                </div>
+                <Input type="text" placeholder="Address" required />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <Input type="number" placeholder="Yearly Income" />
+                    <p className="text-xs text-gray-500 mt-1">
+                      (if you are doing job)
+                    </p>
+                  </div>
+                  <div>
+                    <Input type="number" placeholder="Turnover" />
+                    <p className="text-xs text-gray-500 mt-1">
+                      (if you are doing Business)
+                    </p>
+                  </div>
+                </div>
+                <Input type="text" placeholder="ITR File no." />
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-900 text-white hover:bg-blue-800"
+                >
+                  Submit
+                </Button>
+              </form>
+            </Modal>
           </section>
 
           {/* Loan Types Section */}
@@ -244,7 +273,10 @@ export default function LoansPage() {
                         variant="outline"
                         className="w-full border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
                       >
-                        <Link href="/loanPdf.pdf">Learn More</Link>
+                        {/* <Link href="/loanPdf.pdf">Learn More</Link> */}
+                        <a href="/loanPdf.pdf" download>
+                          Learn More
+                        </a>
                       </Button>
                     </CardFooter>
                   </Card>
@@ -342,7 +374,10 @@ export default function LoansPage() {
                   className="w-56 text-center bg-blue-900 hover:bg-blue-800"
                   asChild
                 >
-                  <Link href="/loanPdf.pdf">Download</Link>
+                  {/* <Link href="/loanPdf.pdf">Download</Link> */}
+                  <a href="/loanPdf.pdf" download>
+                    Download
+                  </a>
                 </Button>
               </div>
             </div>
@@ -479,18 +514,18 @@ export default function LoansPage() {
                     <Button
                       size="lg"
                       className="gap-1 bg-amber-500 hover:bg-amber-600"
+                      onClick={() => setIsModalOpen(true)}
                     >
-                      <Link href="https://wa.me/919028999253">Apply Now </Link>
-
+                      Apply Now
                       <ArrowRight className="h-4 w-4" />
                     </Button>
-                    
+
                     <Button
                       size="lg"
                       variant="outline"
                       className="gap-1 border-white text-black hover:bg-white/10 hover:text-white"
                     >
-                      Contact Us
+                      <Link href="/#contact">Contact Us</Link>
                     </Button>
                   </div>
                 </div>
@@ -516,4 +551,6 @@ export default function LoansPage() {
       </div>
     </>
   );
-}
+};
+
+export default LoansPage;

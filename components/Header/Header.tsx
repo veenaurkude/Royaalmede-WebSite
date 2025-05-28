@@ -13,7 +13,7 @@ const Header = () => {
       <div className="container flex h-24 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="text-xl font-bold text-blue-900">
-            <img src="./logo.svg" className="w-[200px]" alt="Royaalmede Logo" />
+            <img src="./royaalmede_logo.png" className="w-[200px]" alt="Royaalmede Logo" />
           </Link>
         </div>
 
@@ -21,10 +21,11 @@ const Header = () => {
         <nav className="hidden md:flex gap-6">
           <Link href="/" className="text-base font-medium hover:text-blue-900">Home</Link>
           <Link href="/about" className="text-base font-medium hover:text-blue-900">About</Link>
-          <Link href="/loans" className="text-base font-medium hover:text-blue-900">Loan Solutions</Link>
-          <Link href="/infrastructure" className="text-base font-medium hover:text-blue-900">Infrastructure</Link>
+          <Link href="/loans" className="text-base font-medium hover:text-blue-900">RoyaalMede Loan</Link>
+          {/* <Link href="/infrastructure" className="text-base font-medium hover:text-blue-900">RoyaalMede Infra</Link> */}
           <Link href="/#testimonials" className="text-base font-medium hover:text-blue-900">Testimonials</Link>
           <Link href="/#contact" className="text-base font-medium hover:text-blue-900">Contact</Link>
+          <Link href="/career" className="text-base font-medium hover:text-blue-900">Career</Link>
         </nav>
 
         {/* Mobile Menu Icon */}
@@ -45,9 +46,10 @@ const Header = () => {
           <Link href="/" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link href="/about" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>About</Link>
           <Link href="/loans" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Loan Solutions</Link>
-          <Link href="/infrastructure" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Infrastructure</Link>
+          {/* <Link href="/infrastructure" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Infrastructure</Link> */}
           <Link href="/#testimonials" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Testimonials</Link>
           <Link href="/#contact" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link href="/career" className="block text-sm font-medium hover:text-blue-900" onClick={() => setMenuOpen(false)}>Career</Link>
         </div>
       )}
     </header>
