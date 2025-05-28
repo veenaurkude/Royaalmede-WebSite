@@ -8,8 +8,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 
-import atulImage from "@/public/atul.jpg";
-import ankkitImage from "@/public/ankit.jpg";
+
 
 const About = () => {
   const properties = [
@@ -130,7 +129,7 @@ const About = () => {
             <div className="w-full lg:w-1/2 flex flex-col items-center">
               <div className="relative w-72 h-72 rounded-xl overflow-hidden border-4 border-amber-500 shadow-lg">
                 <Image
-                  src={atulImage}
+                  src="/atul.JPG"
                   alt="Mr. Atul Waghare"
                   fill
                   className="object-cover"
@@ -181,7 +180,7 @@ const About = () => {
             <div className="w-full lg:w-1/2 flex flex-col items-center">
               <div className="relative w-72 h-72 rounded-xl overflow-hidden border-4 border-amber-500 shadow-lg">
                 <Image
-                  src={ankkitImage}
+                  src="/ankkit.JPG"
                   alt="Mr. Ankkit Malviyaa"
                   fill
                   className="object-cover"
