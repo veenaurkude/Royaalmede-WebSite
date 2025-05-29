@@ -35,6 +35,9 @@ import ElfsightReview from "@/components/ElfsightReview/ElfsightReview";
 import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 import Counter from "@/components/Counter/Counter";
 import Modal from "@/components/Modal/Modal";
+import axios from "axios";
+import config from "@/lib/config";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const pathname = usePathname();
@@ -52,6 +55,34 @@ export default function Home() {
   }, [pathname]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      await axios.post(`${config.BASE_URL}/api/enquiries`, formData);
+
+      console.log("Submitted data:", formData);
+    toast.success("Loan enquiry submitted successfully!");
+
+    setIsModalOpen(false);
+    setFormData({ name: "", email: "", phone: "" });
+  } catch (error) {
+    console.error("Failed to submit loan enquiry:", error);
+    toast.error("There was a problem submitting your enquiry.");
+  }
+};
 
   return (
     <>
@@ -138,18 +169,39 @@ export default function Home() {
               <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center">
                 Infra Enquiry Form
               </h2>
-              <form className="space-y-4">
-                <Input type="text" placeholder="Full Name" />
-                <Input type="email" placeholder="Email" />
-                <Input type="tel" placeholder="Phone Number" />
+              <form className="space-y-4" onSubmit={handleSubmit}>
+  <Input
+    type="text"
+    name="name"
+    placeholder="Full Name"
+    value={formData.name}
+    onChange={handleChange}
+    required
+  />
+  <Input
+    type="email"
+    name="email"
+    placeholder="Email"
+    value={formData.email}
+    onChange={handleChange}
+    required
+  />
+  <Input
+    type="tel"
+    name="phone"
+    placeholder="Phone Number"
+    value={formData.phone}
+    onChange={handleChange}
+    required
+  />
 
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-900 text-white hover:bg-blue-800"
-                >
-                  Submit Application
-                </Button>
-              </form>
+  <Button
+    type="submit"
+    className="w-full bg-blue-900 text-white hover:bg-blue-800"
+  >
+    Submit Application
+  </Button>
+</form>
             </Modal>
           </section>
 

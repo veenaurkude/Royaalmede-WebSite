@@ -26,9 +26,53 @@ import Footer from "@/components/Footer/Footer";
 import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 import Modal from "@/components/Modal/Modal";
 import { Input } from "@/components/ui/input";
+import axios from "axios";
+import config from "@/lib/config";
+import { toast } from "react-toastify";
 
 const LoansPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    yearlyIncome: "",
+    turnover: "",
+    itrFileNo: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    await axios.post(`${config.BASE_URL}/api/loan-enquiries`, formData);
+
+    console.log("Submitted data:", formData);
+
+    toast.success("Loan enquiry submitted successfully!"); // ✅ toast success
+
+    setIsModalOpen(false);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      yearlyIncome: "",
+      turnover: "",
+      itrFileNo: "",
+    });
+  } catch (error) {
+    console.error("Failed to submit loan enquiry:", error);
+    toast.error("There was a problem submitting your enquiry."); // ✅ toast error
+  }
+};
 
   return (
     <>
@@ -123,28 +167,74 @@ const LoansPage = () => {
               <h2 className="text-2xl font-bold mb-6 text-blue-900 text-center">
                 Loan Enquiry Form
               </h2>
-              <form className="space-y-4 text-blue-900">
-                <Input type="text" placeholder="Name" required />
+              <form className="space-y-4 text-blue-900" onSubmit={handleSubmit}>
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input type="tel" placeholder="Mobile No." required />
-                  <Input type="email" placeholder="Email-Id" required />
+                  <Input
+                    type="tel"
+                    placeholder="Mobile No."
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email-Id"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
-                <Input type="text" placeholder="Address" required />
+                <Input
+                  type="text"
+                  placeholder="Address"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <Input type="number" placeholder="Yearly Income" />
+                    <Input
+                      type="number"
+                      placeholder="Yearly Income"
+                      name="yearlyIncome"
+                      value={formData.yearlyIncome}
+                      onChange={handleChange}
+                    />
                     <p className="text-xs text-gray-500 mt-1">
                       (if you are doing job)
                     </p>
                   </div>
                   <div>
-                    <Input type="number" placeholder="Turnover" />
+                    <Input
+                      type="number"
+                      placeholder="Turnover"
+                      name="turnover"
+                      value={formData.turnover}
+                      onChange={handleChange}
+                    />
                     <p className="text-xs text-gray-500 mt-1">
                       (if you are doing Business)
                     </p>
                   </div>
                 </div>
-                <Input type="text" placeholder="ITR File no." />
+                <Input
+                  type="text"
+                  placeholder="ITR File no."
+                  name="itrFileNo"
+                  value={formData.itrFileNo}
+                  onChange={handleChange}
+                />
                 <Button
                   type="submit"
                   className="w-full bg-blue-900 text-white hover:bg-blue-800"
