@@ -136,7 +136,7 @@ export default function Home() {
             {/* Content container */}
             <div className="relative z-10 text-center px-4 md:px-6 max-w-4xl">
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-6xl ">
-                Royaalmede Infrastructure
+                Royaalmede Infraa
               </h1>
               <p className="mt-4 text-gray-200 md:text-xl/relaxed">
                 Providing comprehensive loan solutions and premium
