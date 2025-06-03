@@ -7,17 +7,17 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Link from "next/link";
 import { Phone, Mail, ArrowLeft } from "lucide-react";
-
 import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
-import JobCards from "@/components/JobCards/JobCards";
+import JobCard from "@/components/JobCard/JobCard";
+
 
 type Job = {
   id: number;
-  title: string;
-  company: string;
+  jobTitle: string;
+  companyName: string;
   location: string;
-  description: string;
-  experience: string;
+  jobDescription: string;
+  totalExperience: string;
 };
 
 const CareerPage = () => {
@@ -27,7 +27,10 @@ const CareerPage = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get(`${config.BASE_URL}/api/careers`); // ✅ Replace with your real API
+        const response = await axios.get(`${config.BASE_URL}/api/careers`);
+
+        console.log("API response:", response.data);
+
         setJobs(response.data);
       } catch (error) {
         console.error("Failed to fetch job data:", error);
@@ -41,7 +44,6 @@ const CareerPage = () => {
 
   return (
     <main className="flex min-h-screen flex-col font-sans bg-white">
-      {/* Header */}
       <Header />
 
       {/* Hero Section */}
@@ -49,7 +51,7 @@ const CareerPage = () => {
         className="relative bg-cover bg-center bg-no-repeat h-[80vh] flex items-center justify-center text-white"
         style={{ backgroundImage: "url('/home1.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-70" />
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4">
             Our Careers
@@ -79,12 +81,19 @@ const CareerPage = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {jobs.map((job) => (
-              <JobCards key={job.id} {...job} />
+              <JobCard
+                key={job.id}
+                jobTitle={job.jobTitle}
+                companyName={job.companyName}
+                location={job.location}
+                jobDescription={job.jobDescription}
+                totalExperience={job.totalExperience}
+              />
             ))}
           </div>
         )}
 
-        {/* Connect With Us Section */}
+        {/* Contact Section */}
         <section className="mt-16 text-center">
           <h2 className="text-2xl font-bold text-blue-900 mb-4">
             Connect With Us
@@ -93,7 +102,7 @@ const CareerPage = () => {
             Interested in joining our team? Reach out to us!
           </p>
 
-          {/* Phone Numbers */}
+          {/* Phone */}
           <div className="flex justify-center items-center gap-2 text-md text-gray-600 mb-1">
             <Phone className="h-5 w-5 text-amber-500" />
             <Link
@@ -124,7 +133,6 @@ const CareerPage = () => {
         </section>
       </section>
 
-      {/* Footer & WhatsApp Button */}
       <Footer />
       <WhatsAppBtn />
     </main>
@@ -132,6 +140,7 @@ const CareerPage = () => {
 };
 
 export default CareerPage;
+
 
 // "use client";
 
