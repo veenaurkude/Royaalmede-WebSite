@@ -13,34 +13,34 @@ import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 const About = () => {
   const properties = [
     {
-      src: "/img1.jpg",
-      title: "Royaalmede",
-      description: "Modern design in a prime residential location.",
+      src: "/royal_kunj.jpg",
+      title: "Royal Kunj",
+      description: "Modern Design in a Prime Residential Location.",
     },
     {
-      src: "/img2.png",
-      title: "Royaalmede Premium",
-      description: "Commercial excellence in the city center.",
+      src: "/royaal_krishnum.jpg",
+      title: "Royaalmede Krishnum",
+      description: "2 BHK Flats with Premium Residential Apartments.",
     },
     {
-      src: "/img3.png",
-      title: "Royaal Kings",
-      description: "Luxury villas surrounded by greenery.",
+      src: "/royaal_platinum.jpg",
+      title: "Royaal Platinum",
+      description: "Luxury Villas surrounded by Greenery.",
     },
     {
-      src: "/img4.png",
-      title: "Royaal Krishnum",
-      description: "Elegant high-rise living with modern amenities.",
+      src: "/royaal_gold.jpg",
+      title: "Royaal Gold",
+      description: "Elegant high-rise living with Modern Amenities.",
     },
     {
-      src: "/img5.png",
-      title: "Rachana City",
-      description: "Sophisticated urban development project.",
+      src: "/royaalmede_1.jpg",
+      title: "Royaalmede1",
+      description: "Sophisticated Urban Development Project.",
     },
     {
-      src: "/img6.png",
-      title: "Royaalmede Plaza",
-      description: "Smart commercial space for modern enterprises.",
+      src: "/royaal_meena.jpg",
+      title: "Royaal Meena",
+      description: "Smart Residential Homes with Modern Design.",
     },
   ];
 
@@ -150,7 +150,7 @@ const About = () => {
                 modern lifestyles. Under the visionary leadership of our
                 directors, Atul Waghare and Ankkit Malviyaa, we focus on
                 quality, innovation, and customer satisfaction to redefine urban
-                living. Guided by Atul’s passion for creativity and Ankit’s
+                living. Guided by Atul’s passion for creativity and Ankkit’s
                 market expertise, we are committed to building sustainable
                 properties that enhance lives and create thriving communities.
               </p>

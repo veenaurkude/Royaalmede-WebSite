@@ -100,28 +100,28 @@ const Footer = () => {
               </h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/infrastructure" className="text-gray-900 hover:text-blue-900">
-                    Royaalmede
+                  <Link href="#properties" className="text-gray-900 hover:text-blue-900">
+                    Royal Kunj
                   </Link>
                 </li>
                 <li>
-                  <Link href="/infrastructure" className="text-gray-900 hover:text-blue-900">
-                    Royaalmede Premium
+                  <Link href="#properties" className="text-gray-900 hover:text-blue-900">
+                    Royaal Krishnum
                   </Link>
                 </li>
                 <li>
-                  <Link href="/infrastructure" className="text-gray-900 hover:text-blue-900">
-                  Royaal Krishnum
+                  <Link href="#properties" className="text-gray-900 hover:text-blue-900">
+                  Royaal Platinum
                   </Link>
                 </li>
                 <li>
-                  <Link href="/infrastructure" className="text-gray-900 hover:text-blue-900">
-                    Royaal City
+                  <Link href="#properties" className="text-gray-900 hover:text-blue-900">
+                    Royaal Gold
                   </Link>
                 </li>
                 <li>
-                  <Link href="/infrastructure" className="text-gray-900 hover:text-blue-900">
-                    Royaal Kings
+                  <Link href="#properties" className="text-gray-900 hover:text-blue-900">
+                    Royaal Meena
                   </Link>
                 </li>
               </ul>

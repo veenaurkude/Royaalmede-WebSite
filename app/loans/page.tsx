@@ -33,46 +33,84 @@ import { toast } from "react-toastify";
 const LoansPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   address: "",
+  //   yearlyIncome: "",
+  //   turnover: "",
+  //   itrFileNo: "",
+  // });
+
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    address: "",
-    yearlyIncome: "",
-    turnover: "",
-    itrFileNo: "",
+    email: "",
+    extfield: "", // either "salaried" or "business"
   });
 
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Form Api
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     await axios.post(`${config.BASE_URL}/api/loan-enquiries`, formData);
+
+  //     console.log("Submitted data:", formData);
+
+  //     toast.success("Loan enquiry submitted successfully!"); // ✅ toast success
+
+  //     setIsModalOpen(false);
+  //     setFormData({
+  //       name: "",
+  //       email: "",
+  //       phone: "",
+  //       address: "",
+  //       yearlyIncome: "",
+  //       turnover: "",
+  //       itrFileNo: "",
+  //     });
+  //   } catch (error) {
+  //     console.error("Failed to submit loan enquiry:", error);
+  //     toast.error("There was a problem submitting your enquiry."); // ✅ toast error
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    await axios.post(`${config.BASE_URL}/api/loan-enquiries`, formData);
+    try {
+      await axios.post(`${config.BASE_URL}/api/loan-enquiries`, formData);
 
-    console.log("Submitted data:", formData);
+      console.log("Submitted data:", formData);
 
-    toast.success("Loan enquiry submitted successfully!"); // ✅ toast success
+      toast.success("Loan enquiry submitted successfully!");
 
-    setIsModalOpen(false);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      yearlyIncome: "",
-      turnover: "",
-      itrFileNo: "",
-    });
-  } catch (error) {
-    console.error("Failed to submit loan enquiry:", error);
-    toast.error("There was a problem submitting your enquiry."); // ✅ toast error
-  }
-};
+      setIsModalOpen(false); // Close modal if applicable
+
+      // Reset the form
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        extfield: "",
+      });
+    } catch (error) {
+      console.error("Failed to submit loan enquiry:", error);
+      toast.error("There was a problem submitting your enquiry.");
+    }
+  };
 
   return (
     <>
@@ -167,7 +205,7 @@ const LoansPage = () => {
               <h2 className="text-2xl font-bold mb-6 text-blue-900 text-center">
                 Loan Enquiry Form
               </h2>
-              <form className="space-y-4 text-blue-900" onSubmit={handleSubmit}>
+              {/* <form className="space-y-4 text-blue-900" onSubmit={handleSubmit}>
                 <Input
                   type="text"
                   placeholder="Name"
@@ -235,6 +273,68 @@ const LoansPage = () => {
                   value={formData.itrFileNo}
                   onChange={handleChange}
                 />
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-900 text-white hover:bg-blue-800"
+                >
+                  Submit
+                </Button>
+              </form> */}
+
+              <form className="space-y-4 text-blue-900" onSubmit={handleSubmit}>
+                <Input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+
+                <Input
+                  type="tel"
+                  placeholder="Mobile No."
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+
+                <div className="flex items-center gap-6">
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="extfield" // ✅ Match your state
+                      value="salaried"
+                      checked={formData.extfield === "salaried"}
+                      onChange={handleChange}
+                      className="form-radio text-blue-900"
+                    />
+                    <span className="ml-2">Salaried</span>
+                  </label>
+
+                  <label className="inline-flex items-center">
+                    <input
+                      type="radio"
+                      name="extfield" // ✅ Match your state
+                      value="business"
+                      checked={formData.extfield === "business"}
+                      onChange={handleChange}
+                      className="form-radio text-blue-900"
+                    />
+                    <span className="ml-2">Business</span>
+                  </label>
+                </div>
+
                 <Button
                   type="submit"
                   className="w-full bg-blue-900 text-white hover:bg-blue-800"

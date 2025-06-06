@@ -62,7 +62,7 @@ export default function Home() {
     phone: "",
   });
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -74,15 +74,15 @@ export default function Home() {
       await axios.post(`${config.BASE_URL}/api/enquiries`, formData);
 
       console.log("Submitted data:", formData);
-    toast.success("Loan enquiry submitted successfully!");
+      toast.success("Loan enquiry submitted successfully!");
 
-    setIsModalOpen(false);
-    setFormData({ name: "", email: "", phone: "" });
-  } catch (error) {
-    console.error("Failed to submit loan enquiry:", error);
-    toast.error("There was a problem submitting your enquiry.");
-  }
-};
+      setIsModalOpen(false);
+      setFormData({ name: "", email: "", phone: "" });
+    } catch (error) {
+      console.error("Failed to submit loan enquiry:", error);
+      toast.error("There was a problem submitting your enquiry.");
+    }
+  };
 
   return (
     <>
@@ -170,38 +170,38 @@ export default function Home() {
                 Infra Enquiry Form
               </h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
-  <Input
-    type="text"
-    name="name"
-    placeholder="Full Name"
-    value={formData.name}
-    onChange={handleChange}
-    required
-  />
-  <Input
-    type="email"
-    name="email"
-    placeholder="Email"
-    value={formData.email}
-    onChange={handleChange}
-    required
-  />
-  <Input
-    type="tel"
-    name="phone"
-    placeholder="Phone Number"
-    value={formData.phone}
-    onChange={handleChange}
-    required
-  />
+                <Input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <Input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
 
-  <Button
-    type="submit"
-    className="w-full bg-blue-900 text-white hover:bg-blue-800"
-  >
-    Submit Application
-  </Button>
-</form>
+                <Button
+                  type="submit"
+                  className="w-full bg-blue-900 text-white hover:bg-blue-800"
+                >
+                  Submit Application
+                </Button>
+              </form>
             </Modal>
           </section>
 
@@ -354,7 +354,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  <h2 className="text-3xl text-blue-900 font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     Our Properties
                   </h2>
                   <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -365,85 +365,168 @@ export default function Home() {
               </div>
 
               <Tabs defaultValue="all" className="mt-12">
-                <TabsList className="grid w-full grid-cols-3 mb-8">
+                {/* <TabsList className="grid w-full grid-cols-3 mb-8">
                   <TabsTrigger value="all">All Properties</TabsTrigger>
                   <TabsTrigger value="residential">Residential</TabsTrigger>
                   <TabsTrigger value="commercial">Commercial</TabsTrigger>
-                </TabsList>
+                </TabsList> */}
                 <TabsContent value="all" className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
+                      // {
+                      //   name: "Royaalmede",
+                      //   address: "1/32, Pipla Fata, Hudkeshwar Road, Nagpur",
+                      //   image: "/img1.jpg",
+                      //   type: "residential",
+                      //   features: [
+                      //     "2 & 3 BHK Apartments",
+                      //     "Swimming Pool",
+                      //     "Gym",
+                      //     "24/7 Security",
+                      //   ],
+                      // },
+                      // {
+                      //   name: "Royaalmede Premium",
+                      //   address:
+                      //     "Plot no. 21, Radha Krishna Nagar, Mahalgi Nagar, Nagpur-440025",
+                      //   image: "/img2.png",
+                      //   type: "residential",
+                      //   features: [
+                      //     "3 & 4 BHK Luxury Apartments",
+                      //     "Clubhouse",
+                      //     "Landscaped Gardens",
+                      //     "Smart Home Features",
+                      //   ],
+                      // },
+                      // {
+                      //   name: "Rachana City",
+                      //   address: "Flat No 23, Rachana Mithila-2 Pipla, Nagpur",
+                      //   image: "/img5.png",
+                      //   type: "residential",
+                      //   features: [
+                      //     "1, 2 & 3 BHK Apartments",
+                      //     "Children's Play Area",
+                      //     "Community Hall",
+                      //     "Power Backup",
+                      //   ],
+                      // },
+                      // {
+                      //   name: "Royaal Krishnum",
+                      //   address: "Plot No 19, Pipla Bus Stop, Nagpur",
+                      //   image: "/img4.png",
+                      //   type: "commercial",
+                      //   features: [
+                      //     "Office Spaces",
+                      //     "Retail Shops",
+                      //     "Ample Parking",
+                      //     "High-Speed Elevators",
+                      //   ],
+                      // },
+                      // {
+                      //   name: "Royaal Kings",
+                      //   address: "Besa, Nagpur",
+                      //   image: "/img3.png",
+                      //   type: "commercial",
+                      //   features: [
+                      //     "Commercial Complex",
+                      //     "Food Court",
+                      //     "Conference Rooms",
+                      //     "24/7 Security",
+                      //   ],
+                      // },
+                      // {
+                      //   name: "Royaalmede Plaza",
+                      //   address: "Hudkeshwar Road, Nagpur",
+                      //   image: "/img6.png",
+                      //   type: "commercial",
+                      //   features: [
+                      //     "Retail Spaces",
+                      //     "Office Units",
+                      //     "Basement Parking",
+                      //     "Modern Architecture",
+                      //   ],
+                      // },
+
+                      // New====
+
                       {
-                        name: "Royaalmede",
-                        address: "1/32, Pipla Fata, Hudkeshwar Road, Nagpur",
-                        image: "/img1.jpg",
+                        name: "Royal Kunj",
+                        address: "Vasant Real Estate, Opp. Zudio, Besa, Nagpur",
+                        image: "/royal_kunj.jpg",
                         type: "residential",
                         features: [
-                          "2 & 3 BHK Apartments",
-                          "Swimming Pool",
-                          "Gym",
+                          "2 BHK Flats",
+                          "Smart Home Automation",
+                          "Digital Lock in Main Door",
                           "24/7 Security",
                         ],
                       },
-                      {
-                        name: "Royaalmede Premium",
-                        address:
-                          "Plot no. 21, Radha Krishna Nagar, Mahalgi Nagar, Nagpur-440025",
-                        image: "/img2.png",
-                        type: "residential",
-                        features: [
-                          "3 & 4 BHK Luxury Apartments",
-                          "Clubhouse",
-                          "Landscaped Gardens",
-                          "Smart Home Features",
-                        ],
-                      },
-                      {
-                        name: "Rachana City",
-                        address: "Flat No 23, Rachana Mithila-2 Pipla, Nagpur",
-                        image: "/img5.png",
-                        type: "residential",
-                        features: [
-                          "1, 2 & 3 BHK Apartments",
-                          "Children's Play Area",
-                          "Community Hall",
-                          "Power Backup",
-                        ],
-                      },
+
                       {
                         name: "Royaal Krishnum",
-                        address: "Plot No 19, Pipla Bus Stop, Nagpur",
-                        image: "/img4.png",
-                        type: "commercial",
+                        address:
+                          "Plot No 19, Sukhakarta Society, Pipla Bus Stop, Nagpur",
+                        image: "/royaal_krishnum.jpg",
+                        type: "residential",
                         features: [
-                          "Office Spaces",
-                          "Retail Shops",
-                          "Ample Parking",
-                          "High-Speed Elevators",
-                        ],
-                      },
-                      {
-                        name: "Royaal Kings",
-                        address: "Besa, Nagpur",
-                        image: "/img3.png",
-                        type: "commercial",
-                        features: [
-                          "Commercial Complex",
-                          "Food Court",
-                          "Conference Rooms",
+                          "2 BHK Luxury Homes",
+                          "Water Supply",
+                          "Smart Home Features",
                           "24/7 Security",
                         ],
                       },
+
                       {
-                        name: "Royaalmede Plaza",
-                        address: "Hudkeshwar Road, Nagpur",
-                        image: "/img6.png",
-                        type: "commercial",
+                        name: "Royaal Platinum",
+                        address:
+                          "Plot no. 21, Radha Krishna Nagar, Mahalgi Nagar, Nagpur",
+                        image: "/royaal_platinum.jpg",
+                        type: "residential",
                         features: [
-                          "Retail Spaces",
-                          "Office Units",
-                          "Basement Parking",
+                          "2 BHK Apartments",
+                          "Smart Home Features",
+                          "Landscaped Gardens",
+                          "24/7 Security",
+                        ],
+                      },
+
+                      {
+                        name: "Royaal Gold",
+                        address: "Flat No. 23, Rachana Nagar, Pipla, Nagpur",
+                        image: "/royaal_gold.jpg",
+                        type: "residential",
+                        features: [
+                          "2 BHK Apartments",
+                          "Children's Play Area",
+                          "Power Backup",
+                          "24/7 Security",
+                        ],
+                      },
+
+                      {
+                        name: "Royaalmede1",
+                        address: "Plot No. 1, Pipla, Hudkeshwar Road, Nagpur",
+                        image: "/royaalmede_1.jpg",
+                        type: "residential",
+                        features: [
+                          "1, 2, 3 BHK Apartments",
                           "Modern Architecture",
+                          "Parking Facilities",
+                          "24/7 Security",
+                        ],
+                      },
+
+                      {
+                        name: "Royaal Meena",
+                        address:
+                          "Plot No. 1, Behind S-Mart, Dighori Road, Nagpur",
+                        image: "/royaal_meena.jpg",
+                        type: "residential",
+                        features: [
+                          "2 BHK Flat Apartments",
+                          "Green Spaces",
+                          "Community Areas",
+                          "24/7 Security",
                         ],
                       },
                     ].map((property, index) => (
@@ -454,7 +537,9 @@ export default function Home() {
                           className="w-full h-80 items-center justify-center bg-white"
                         />
                         <CardHeader>
-                          <CardTitle>{property.name}</CardTitle>
+                          <CardTitle className="text-blue-900">
+                            {property.name}
+                          </CardTitle>
                           <CardDescription className="flex items-start gap-1">
                             <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                             {property.address}
@@ -485,7 +570,7 @@ export default function Home() {
                     ))}
                   </div>
                 </TabsContent>
-                <TabsContent value="residential" className="space-y-4">
+                {/* <TabsContent value="residential" className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
                       {
@@ -552,16 +637,16 @@ export default function Home() {
                             </ul>
                           </div>
                         </CardContent>
-                        {/* <CardFooter>
+                        <CardFooter>
                         <Button variant="outline" className="w-full">
                           View Details
                         </Button>
-                      </CardFooter> */}
+                      </CardFooter>
                       </Card>
                     ))}
                   </div>
-                </TabsContent>
-                <TabsContent value="commercial" className="space-y-4">
+                </TabsContent> */}
+                {/* <TabsContent value="commercial" className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
                       {
@@ -627,15 +712,15 @@ export default function Home() {
                             </ul>
                           </div>
                         </CardContent>
-                        {/* <CardFooter>
+                        <CardFooter>
                         <Button variant="outline" className="w-full">
                           View Details
                         </Button>
-                      </CardFooter> */}
+                      </CardFooter>
                       </Card>
                     ))}
                   </div>
-                </TabsContent>
+                </TabsContent> */}
               </Tabs>
             </div>
           </section>
@@ -645,7 +730,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  <h2 className="text-3xl text-blue-900 font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     Premium Amenities
                   </h2>
                   <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -710,7 +795,9 @@ export default function Home() {
                     className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-sm"
                   >
                     <div className="text-4xl mb-4">{amenity.icon}</div>
-                    <h3 className="text-xl font-bold mb-2">{amenity.title}</h3>
+                    <h3 className="text-xl text-blue-900 font-bold mb-2">
+                      {amenity.title}
+                    </h3>
                     <p className="text-gray-500">{amenity.description}</p>
                   </div>
                 ))}
@@ -723,7 +810,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  <h2 className="text-3xl text-blue-900 font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     Location Advantages
                   </h2>
                   <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -801,7 +888,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
               <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
                 <div className="space-y-4">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                  <h2 className="text-3xl  text-blue-900 font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     Ready to Find Your Perfect Space?
                   </h2>
                   <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -818,7 +905,7 @@ export default function Home() {
                     </Button>
                     <Button size="lg" variant="outline" className="gap-1">
                       {/* <Link href="/loanPdf.pdf">Download Brochure</Link> */}
-                      <a href="/loanPdf.pdf" download>
+                      <a href="/Royal_Infra.pdf" download>
                         Download Brochure
                       </a>
                     </Button>

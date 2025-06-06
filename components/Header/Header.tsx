@@ -21,7 +21,7 @@ const Header = () => {
         <nav className="hidden md:flex gap-6">
           <Link href="/" className="text-base font-medium hover:text-blue-900">Home</Link>
           <Link href="/about" className="text-base font-medium hover:text-blue-900">About</Link>
-          <Link href="/loans" className="text-base font-medium hover:text-blue-900">RoyaalMede Loan</Link>
+          <Link href="/loans" className="text-base font-medium hover:text-blue-900">Royaalmede Loan</Link>
           {/* <Link href="/infrastructure" className="text-base font-medium hover:text-blue-900">RoyaalMede Infra</Link> */}
           <Link href="/#testimonials" className="text-base font-medium hover:text-blue-900">Testimonials</Link>
           <Link href="/#contact" className="text-base font-medium hover:text-blue-900">Contact</Link>
