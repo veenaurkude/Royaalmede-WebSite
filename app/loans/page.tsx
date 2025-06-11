@@ -27,22 +27,13 @@ import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 import Modal from "@/components/Modal/Modal";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
-import config from "@/lib/config";
+import { BASE_URL } from "@/lib/config";
 import { toast } from "react-toastify";
 
 const LoansPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   phone: "",
-  //   address: "",
-  //   yearlyIncome: "",
-  //   turnover: "",
-  //   itrFileNo: "",
-  // });
-
+  
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -50,10 +41,6 @@ const LoansPage = () => {
     extfield: "", // either "salaried" or "business"
   });
 
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({ ...prev, [name]: value }));
-  // };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -61,37 +48,12 @@ const LoansPage = () => {
 
   // Form Api
 
-  // const handleSubmit = async (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     await axios.post(`${config.BASE_URL}/api/loan-enquiries`, formData);
-
-  //     console.log("Submitted data:", formData);
-
-  //     toast.success("Loan enquiry submitted successfully!"); // ✅ toast success
-
-  //     setIsModalOpen(false);
-  //     setFormData({
-  //       name: "",
-  //       email: "",
-  //       phone: "",
-  //       address: "",
-  //       yearlyIncome: "",
-  //       turnover: "",
-  //       itrFileNo: "",
-  //     });
-  //   } catch (error) {
-  //     console.error("Failed to submit loan enquiry:", error);
-  //     toast.error("There was a problem submitting your enquiry."); // ✅ toast error
-  //   }
-  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      await axios.post(`${config.BASE_URL}/api/loan-enquiries`, formData);
+      await axios.post(`${BASE_URL}/loan-enquiries`, formData);
 
       console.log("Submitted data:", formData);
 
@@ -205,81 +167,7 @@ const LoansPage = () => {
               <h2 className="text-2xl font-bold mb-6 text-blue-900 text-center">
                 Loan Enquiry Form
               </h2>
-              {/* <form className="space-y-4 text-blue-900" onSubmit={handleSubmit}>
-                <Input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Input
-                    type="tel"
-                    placeholder="Mobile No."
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Input
-                    type="email"
-                    placeholder="Email-Id"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <Input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <Input
-                      type="number"
-                      placeholder="Yearly Income"
-                      name="yearlyIncome"
-                      value={formData.yearlyIncome}
-                      onChange={handleChange}
-                    />
-                    <p className="text-xs text-gray-500 mt-1">
-                      (if you are doing job)
-                    </p>
-                  </div>
-                  <div>
-                    <Input
-                      type="number"
-                      placeholder="Turnover"
-                      name="turnover"
-                      value={formData.turnover}
-                      onChange={handleChange}
-                    />
-                    <p className="text-xs text-gray-500 mt-1">
-                      (if you are doing Business)
-                    </p>
-                  </div>
-                </div>
-                <Input
-                  type="text"
-                  placeholder="ITR File no."
-                  name="itrFileNo"
-                  value={formData.itrFileNo}
-                  onChange={handleChange}
-                />
-                <Button
-                  type="submit"
-                  className="w-full bg-blue-900 text-white hover:bg-blue-800"
-                >
-                  Submit
-                </Button>
-              </form> */}
+              
 
               <form className="space-y-4 text-blue-900" onSubmit={handleSubmit}>
                 <Input
@@ -451,10 +339,7 @@ const LoansPage = () => {
                             </div>
                             <span className="text-gray-600">{feature}</span>
                           </li>
-                          // <li key={i} className="flex items-start gap-2">
-                          //   <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                          //   <span className="text-gray-600">{feature}</span>
-                          // </li>
+                          
                         ))}
                       </ul>
                     </CardContent>
@@ -497,42 +382,36 @@ const LoansPage = () => {
                       description:
                         "Fill out our simple application form with your details and required documents.",
                       icon: "📝",
-                      // image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
                     },
                     {
                       step: "Provide Income Documents & Bank Account Statement",
                       description:
                         "Our team verifies your documents and checks your eligibility for the loan.",
                       icon: "📄",
-                      // image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
                     },
                     {
                       step: "Accept Loan Terms",
                       description:
                         "Once verified, your loan is approved within 48 hours.",
                       icon: "✅",
-                      // image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
                     },
                     {
                       step: "Execution of Loan Agreement",
                       description:
                         "Digitally sign the agreement to proceed with your loan disbursement.",
                       icon: "🖋️",
-                      // image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
                     },
                     {
                       step: "Disbursement into your Bank Account",
                       description:
                         "The approved loan amount is credited directly to your bank account.",
                       icon: "💰",
-                      // image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
                     },
                     {
                       step: "Pay EMI through Auto Debit",
                       description:
                         "Your EMIs will be deducted automatically each month from your account.",
                       icon: "🏦",
-                      // image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80",
                     },
                   ].map((step, index) => (
                     <div key={index} className="relative">
@@ -540,9 +419,7 @@ const LoansPage = () => {
                         <div className="w-12 h-12 rounded-full bg-blue-900 text-white flex items-center justify-center mb-4 text-xl">
                           {index + 1}
                         </div>
-                        {/* <div className="h-32 w-full mb-4 overflow-hidden rounded-md">
-                        <img src={step.image || "/placeholder.svg"} alt={step.step} className="w-full h-full object-cover" />
-                      </div> */}
+                      
                         <div className="text-3xl mb-4">{step.icon}</div>
                         <h3 className="text-xl font-bold mb-2 text-blue-900">
                           {step.step}

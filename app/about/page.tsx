@@ -210,7 +210,6 @@ const About = () => {
                         alt={property.title}
                         fill
                         className="w-full h-80 items-center justify-center bg-white"
-                        // className="object-cover"
                       />
                     </div>
                     <div className="p-4">

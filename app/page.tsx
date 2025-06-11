@@ -36,8 +36,8 @@ import WhatsAppBtn from "@/components/WhatsAppBtn/WhatsAppBtn";
 import Counter from "@/components/Counter/Counter";
 import Modal from "@/components/Modal/Modal";
 import axios from "axios";
-import config from "@/lib/config";
 import { toast } from "react-toastify";
+import { BASE_URL } from "@/lib/config";
 
 export default function Home() {
   const pathname = usePathname();
@@ -67,11 +67,12 @@ export default function Home() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      await axios.post(`${config.BASE_URL}/api/enquiries`, formData);
+      await axios.post(`${BASE_URL}/enquiries`, formData);
 
       console.log("Submitted data:", formData);
       toast.success("Loan enquiry submitted successfully!");
@@ -233,121 +234,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Services Overview Section */}
-          {/* <section className="py-16 bg-gray-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-blue-900">
-                  Our Services
-                </h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Discover our comprehensive range of services designed to meet
-                  your needs.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-              <Card className="h-full overflow-hidden border-0 shadow-lg">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="/home.jpg"
-                    alt="Loan Solutions"
-                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-blue-900">
-                    RoyaalMede Loan Solutions
-                  </CardTitle>
-                  <CardDescription className="text-gray-600">
-                    Comprehensive loan options to meet your financial needs,
-                    offering competitive interest rates, flexible repayment
-                    terms, quick approvals, and personalized support throughout
-                    the process.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Business Loans</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Personal Loans</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Home Loans</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Mortgage Loans</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    className="w-full bg-blue-900 hover:bg-blue-800"
-                    asChild
-                  >
-                    <Link href="/loans">View Loan Solutions</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-              <Card className="h-full overflow-hidden border-0 shadow-lg">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src="home2.jpg"
-                    alt="Infrastructure Projects"
-                    className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-blue-900">
-                    RoyaalMede Infrastructure Projects
-                  </CardTitle>
-                  <CardDescription className="text-gray-600">
-                    Premium residential and commercial properties across Nagpur
-                    featuring modern amenities, sustainable design, and
-                    excellent connectivity to key city hubs.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Royaalmede Premium</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Rachana City</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Royaal Krishnum</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-amber-500 mt-0.5" />
-                      <span>Royaal Kings</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    className="w-full bg-blue-900 hover:bg-blue-800"
-                    asChild
-                  >
-                    <Link href="/infrastructure">
-                      View Infrastructure Projects
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </div>
-        </section> */}
+          
 
           {/* Properties Section */}
           <section id="properties" className="py-16">
@@ -373,81 +260,7 @@ export default function Home() {
                 <TabsContent value="all" className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                      // {
-                      //   name: "Royaalmede",
-                      //   address: "1/32, Pipla Fata, Hudkeshwar Road, Nagpur",
-                      //   image: "/img1.jpg",
-                      //   type: "residential",
-                      //   features: [
-                      //     "2 & 3 BHK Apartments",
-                      //     "Swimming Pool",
-                      //     "Gym",
-                      //     "24/7 Security",
-                      //   ],
-                      // },
-                      // {
-                      //   name: "Royaalmede Premium",
-                      //   address:
-                      //     "Plot no. 21, Radha Krishna Nagar, Mahalgi Nagar, Nagpur-440025",
-                      //   image: "/img2.png",
-                      //   type: "residential",
-                      //   features: [
-                      //     "3 & 4 BHK Luxury Apartments",
-                      //     "Clubhouse",
-                      //     "Landscaped Gardens",
-                      //     "Smart Home Features",
-                      //   ],
-                      // },
-                      // {
-                      //   name: "Rachana City",
-                      //   address: "Flat No 23, Rachana Mithila-2 Pipla, Nagpur",
-                      //   image: "/img5.png",
-                      //   type: "residential",
-                      //   features: [
-                      //     "1, 2 & 3 BHK Apartments",
-                      //     "Children's Play Area",
-                      //     "Community Hall",
-                      //     "Power Backup",
-                      //   ],
-                      // },
-                      // {
-                      //   name: "Royaal Krishnum",
-                      //   address: "Plot No 19, Pipla Bus Stop, Nagpur",
-                      //   image: "/img4.png",
-                      //   type: "commercial",
-                      //   features: [
-                      //     "Office Spaces",
-                      //     "Retail Shops",
-                      //     "Ample Parking",
-                      //     "High-Speed Elevators",
-                      //   ],
-                      // },
-                      // {
-                      //   name: "Royaal Kings",
-                      //   address: "Besa, Nagpur",
-                      //   image: "/img3.png",
-                      //   type: "commercial",
-                      //   features: [
-                      //     "Commercial Complex",
-                      //     "Food Court",
-                      //     "Conference Rooms",
-                      //     "24/7 Security",
-                      //   ],
-                      // },
-                      // {
-                      //   name: "Royaalmede Plaza",
-                      //   address: "Hudkeshwar Road, Nagpur",
-                      //   image: "/img6.png",
-                      //   type: "commercial",
-                      //   features: [
-                      //     "Retail Spaces",
-                      //     "Office Units",
-                      //     "Basement Parking",
-                      //     "Modern Architecture",
-                      //   ],
-                      // },
-
-                      // New====
+                      
 
                       {
                         name: "Royal Kunj",
@@ -570,157 +383,7 @@ export default function Home() {
                     ))}
                   </div>
                 </TabsContent>
-                {/* <TabsContent value="residential" className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {[
-                      {
-                        name: "Royaalmede",
-                        address: "1/32, Pipla Fata, Hudkeshwar Road, Nagpur",
-                        image: "/img1.jpg",
-                        features: [
-                          "2 & 3 BHK Apartments",
-                          "Swimming Pool",
-                          "Gym",
-                          "24/7 Security",
-                        ],
-                      },
-                      {
-                        name: "Royaalmede Premium",
-                        address:
-                          "Plot no. 21, Radha Krishna Nagar, Mahalgi Nagar, Nagpur-440025",
-                        image: "/img2.png",
-                        features: [
-                          "3 & 4 BHK Luxury Apartments",
-                          "Clubhouse",
-                          "Landscaped Gardens",
-                          "Smart Home Features",
-                        ],
-                      },
-                      {
-                        name: "Rachana City",
-                        address: "Flat No 23, Rachana Mithila-2 Pipla, Nagpur",
-                        image: "/img5.png",
-                        features: [
-                          "1, 2 & 3 BHK Apartments",
-                          "Children's Play Area",
-                          "Community Hall",
-                          "Power Backup",
-                        ],
-                      },
-                    ].map((property, index) => (
-                      <Card key={index} className="overflow-hidden h-full">
-                        <img
-                          src={property.image || "/placeholder.svg"}
-                          alt={property.name}
-                          className="w-full h-80 items-center justify-center bg-white"
-                        />
-                        <CardHeader>
-                          <CardTitle>{property.name}</CardTitle>
-                          <CardDescription className="flex items-start gap-1">
-                            <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                            {property.address}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-2">
-                            <p className="text-sm font-medium">Key Features:</p>
-                            <ul className="space-y-1">
-                              {property.features.map((feature, i) => (
-                                <li
-                                  key={i}
-                                  className="flex items-start gap-2 text-sm"
-                                >
-                                  <Check className="h-4 w-4 text-primary mt-0.5" />
-                                  <span>{feature}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </CardContent>
-                        <CardFooter>
-                        <Button variant="outline" className="w-full">
-                          View Details
-                        </Button>
-                      </CardFooter>
-                      </Card>
-                    ))}
-                  </div>
-                </TabsContent> */}
-                {/* <TabsContent value="commercial" className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {[
-                      {
-                        name: "Royaal Krishnum",
-                        address: "Plot No 19, Pipla Bus Stop, Nagpur",
-                        image: "/img4.png",
-                        features: [
-                          "Office Spaces",
-                          "Retail Shops",
-                          "Ample Parking",
-                          "High-Speed Elevators",
-                        ],
-                      },
-                      {
-                        name: "Royaal Kings",
-                        address: "Besa, Nagpur",
-                        image: "/img3.png",
-                        features: [
-                          "Commercial Complex",
-                          "Food Court",
-                          "Conference Rooms",
-                          "24/7 Security",
-                        ],
-                      },
-                      {
-                        name: "Royaalmede Plaza",
-                        address: "Hudkeshwar Road, Nagpur",
-                        image: "/img6.png",
-                        features: [
-                          "Retail Spaces",
-                          "Office Units",
-                          "Basement Parking",
-                          "Modern Architecture",
-                        ],
-                      },
-                    ].map((property, index) => (
-                      <Card key={index} className="overflow-hidden h-full">
-                        <img
-                          src={property.image || "/placeholder.svg"}
-                          alt={property.name}
-                          className="w-full h-80 items-center justify-center bg-white"
-                        />
-                        <CardHeader>
-                          <CardTitle>{property.name}</CardTitle>
-                          <CardDescription className="flex items-start gap-1">
-                            <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                            {property.address}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-2">
-                            <p className="text-sm font-medium">Key Features:</p>
-                            <ul className="space-y-1">
-                              {property.features.map((feature, i) => (
-                                <li
-                                  key={i}
-                                  className="flex items-start gap-2 text-sm"
-                                >
-                                  <Check className="h-4 w-4 text-primary mt-0.5" />
-                                  <span>{feature}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </CardContent>
-                        <CardFooter>
-                        <Button variant="outline" className="w-full">
-                          View Details
-                        </Button>
-                      </CardFooter>
-                      </Card>
-                    ))}
-                  </div>
-                </TabsContent> */}
+                
               </Tabs>
             </div>
           </section>

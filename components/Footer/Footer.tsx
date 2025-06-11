@@ -60,14 +60,7 @@ const Footer = () => {
                     RoyaalMede Loan Solutions
                   </Link>
                 </li>
-                {/* <li>
-                  <Link
-                    href="/infrastructure"
-                    className="text-gray-900 hover:text-blue-900"
-                  >
-                    RoyaalMede Infrastructure
-                  </Link>
-                </li> */}
+                
                 <li>
                   <Link
                     href="/#testimonials"
@@ -143,7 +136,6 @@ const Footer = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <Mail className="h-5 w-5 min-w-[20px] text-amber-500 mt-1" />
-                  {/* <span className="text-gray-400">royaalmede@gmail.com</span> */}
                   <Link href='mailto:royaalmede@gmail.com' className="text-gray-900 hover:text-blue-900">royaalmede@gmail.com</Link>
                 </li>
               </ul>
