@@ -167,7 +167,7 @@ export default function Home() {
             {/* Modal */}
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
               <h2 className="text-2xl font-bold mb-4 text-blue-900 text-center">
-                Infra Enquiry Form
+                Infraa Enquiry Form
               </h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <Input
