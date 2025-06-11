@@ -173,7 +173,7 @@ const LoansPage = () => {
             {/* Content */}
             <div className="relative z-10 text-center px-4 max-w-4xl">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-                RoyaalMede Loan Solutions
+                Royaalmede Loan Solutions
               </h1>
               <p className="text-lg sm:text-xl text-gray-200 mb-6">
                 We offer a variety of loan options to meet your financial needs
